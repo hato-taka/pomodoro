@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { TimerCountDownDisplay } from './TimerCountDownDisplay';
 import { TimerToggleButton } from './TimerToggleButton';
+import { TimerModeDisplay, TimerModes } from './TimerModeDisplay';
 
 const FOCUS_TIME_MINUTES = 0.2 * 60 * 1000;
 const BREAK_TIME_MINUTES = 0.1 * 60 * 1000;
@@ -11,7 +12,7 @@ export default function App() {
   const [timerCount, setTimerCount] = useState<number>(12 * 1000)
   const [timerInterval, setTimerInterval] = useState<NodeJS.Timeout | null>(null)
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false)
-  const [timerMode, setTimerMode] = useState<'Focus' | 'Break'>('Focus')
+  const [timerMode, setTimerMode] = useState<TimerModes>('Focus')
 
   useEffect(() => {
     if(timerCount === 0) {
@@ -40,8 +41,11 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text>Time to {timerMode === 'Focus' ? 'Focus 🍅' : 'Break ☕️'}</Text>
+    <View style={{
+      ...styles.container, 
+    ...{backgroundColor: timerMode === 'Break' ? "#7b5544" : "#d95550"
+    }}}>
+      <TimerModeDisplay timerMode={timerMode} />
       <StatusBar style="auto" />
       <TimerToggleButton isTimerRunning={isTimerRunning} startTimer={startTimer} stopTimer={stopTimer} />
       <TimerCountDownDisplay timerDate={new Date(timerCount)} />
