@@ -17,6 +17,11 @@ npx expo start
 ```
 
 
+# web でのビルドについて注意点
+```
+expo build:web is not supported in the local CLI, please use npx expo export:web instead
+```
+
 1. **`expo publish`の廃止**
    - 以前は、`expo publish` コマンドを使用してプロジェクトの更新をOTA（Over-The-Air）で配布することが一般的でした。
    - このコマンドは、Expoが提供するクラウドサービスに直接接続してアプリの更新を公開していました。

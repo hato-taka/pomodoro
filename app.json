@@ -36,6 +36,7 @@
     },
     "updates": {
       "url": "https://u.expo.dev/db2f0902-268d-473a-8b42-ca40edc285d9"
-    }
+    },
+    "platforms": ["ios", "android", "web"]
   }
 }

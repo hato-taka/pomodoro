@@ -1,6 +1,9 @@
 {
     "build": {
       "production": {
+      },
+      "web": {
+        "cache": true
       }
     }
   }
